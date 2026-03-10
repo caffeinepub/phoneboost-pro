@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/assets/fonts/GeistMono.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    --background: 0.09 0.015 260;
+    --foreground: 0.96 0.01 220;
+    --card: 0.13 0.018 260;
+    --card-foreground: 0.96 0.01 220;
+    --popover: 0.15 0.02 260;
+    --popover-foreground: 0.96 0.01 220;
+    --primary: 0.82 0.18 195;
+    --primary-foreground: 0.09 0.015 260;
+    --secondary: 0.18 0.025 260;
+    --secondary-foreground: 0.96 0.01 220;
+    --muted: 0.16 0.02 260;
+    --muted-foreground: 0.55 0.04 240;
+    --accent: 0.72 0.22 300;
+    --accent-foreground: 0.09 0.015 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.96 0.01 220;
+    --border: 0.22 0.025 260;
+    --input: 0.18 0.025 260;
+    --ring: 0.82 0.18 195;
+    --chart-1: 0.82 0.18 195;
+    --chart-2: 0.82 0.2 150;
+    --chart-3: 0.78 0.19 50;
+    --chart-4: 0.72 0.22 300;
+    --chart-5: 0.65 0.22 25;
+    --sidebar: 0.11 0.018 260;
+    --sidebar-foreground: 0.96 0.01 220;
+    --sidebar-primary: 0.82 0.18 195;
+    --sidebar-primary-foreground: 0.09 0.015 260;
+    --sidebar-accent: 0.18 0.025 260;
+    --sidebar-accent-foreground: 0.96 0.01 220;
+    --sidebar-border: 0.22 0.025 260;
+    --sidebar-ring: 0.82 0.18 195;
+    /* Neon color variables */
+    --neon-cyan: oklch(0.82 0.18 195);
+    --neon-green: oklch(0.82 0.2 150);
+    --neon-purple: oklch(0.72 0.22 300);
+    --neon-orange: oklch(0.78 0.19 50);
+    --neon-red: oklch(0.65 0.22 25);
+    --neon-yellow: oklch(0.88 0.2 95);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Phone container */
+.phone-frame {
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: oklch(var(--background));
+}
+
+@media (min-width: 500px) {
+  body {
+    background: oklch(0.06 0.02 260);
+    background-image:
+      radial-gradient(ellipse at 30% 20%, oklch(0.12 0.04 260 / 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, oklch(0.1 0.04 300 / 0.4) 0%, transparent 60%);
+  }
+  .phone-frame {
+    box-shadow:
+      0 0 0 1px oklch(0.25 0.04 260),
+      0 32px 80px oklch(0 0 0 / 0.8),
+      0 0 60px oklch(0.82 0.18 195 / 0.05);
+    border-radius: 2.5rem;
+    min-height: 100dvh;
+  }
+}
+
+/* Neon glow utilities */
+.glow-cyan {
+  box-shadow: 0 0 20px oklch(0.82 0.18 195 / 0.4), 0 0 40px oklch(0.82 0.18 195 / 0.15);
+}
+.glow-green {
+  box-shadow: 0 0 20px oklch(0.82 0.2 150 / 0.4), 0 0 40px oklch(0.82 0.2 150 / 0.15);
+}
+.glow-purple {
+  box-shadow: 0 0 20px oklch(0.72 0.22 300 / 0.4), 0 0 40px oklch(0.72 0.22 300 / 0.15);
+}
+.glow-orange {
+  box-shadow: 0 0 20px oklch(0.78 0.19 50 / 0.4), 0 0 40px oklch(0.78 0.19 50 / 0.15);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 12px oklch(0.82 0.18 195 / 0.8);
+}
+
+/* Glassmorphism */
+.glass {
+  background: oklch(1 0 0 / 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(1 0 0 / 0.08);
+}
+
+/* Gradient cards */
+.grad-cyan {
+  background: linear-gradient(135deg, oklch(0.82 0.18 195 / 0.15) 0%, oklch(0.82 0.18 195 / 0.05) 100%);
+  border: 1px solid oklch(0.82 0.18 195 / 0.25);
+}
+.grad-green {
+  background: linear-gradient(135deg, oklch(0.82 0.2 150 / 0.15) 0%, oklch(0.82 0.2 150 / 0.05) 100%);
+  border: 1px solid oklch(0.82 0.2 150 / 0.25);
+}
+.grad-purple {
+  background: linear-gradient(135deg, oklch(0.72 0.22 300 / 0.15) 0%, oklch(0.72 0.22 300 / 0.05) 100%);
+  border: 1px solid oklch(0.72 0.22 300 / 0.25);
+}
+.grad-orange {
+  background: linear-gradient(135deg, oklch(0.78 0.19 50 / 0.15) 0%, oklch(0.78 0.19 50 / 0.05) 100%);
+  border: 1px solid oklch(0.78 0.19 50 / 0.25);
+}
+.grad-red {
+  background: linear-gradient(135deg, oklch(0.65 0.22 25 / 0.15) 0%, oklch(0.65 0.22 25 / 0.05) 100%);
+  border: 1px solid oklch(0.65 0.22 25 / 0.25);
+}
+
+/* Animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes count-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes sweep {
+  from { stroke-dashoffset: 440; }
+  to { stroke-dashoffset: var(--dash-end); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
+}
+@keyframes cool-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes bar-fill {
+  from { width: 0%; }
+  to { width: var(--bar-width); }
+}
+@keyframes scan-line {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(200px); opacity: 0; }
+}
+@keyframes ping-neon {
+  75%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-cool-spin { animation: cool-spin 1.5s linear infinite; }
+.animate-count-up { animation: count-up 0.4s ease-out; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 0.08) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+.animate-scan-line { animation: scan-line 2s ease-in-out; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0.04 260);
+  border-radius: 99px;
+}
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: oklch(0.11 0.02 260 / 0.92);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid oklch(1 0 0 / 0.06);
+  z-index: 100;
+}
+
+/* Active tab indicator */
+.nav-active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px oklch(0.82 0.18 195 / 0.6);
+}
+.nav-active svg {
+  filter: drop-shadow(0 0 6px oklch(0.82 0.18 195 / 0.8));
+}
